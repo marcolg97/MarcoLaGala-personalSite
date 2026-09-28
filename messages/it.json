@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Progetti",
+    "about": "Chi sono"
+  },
+  "header": {
+    "mainNavigation": "Navigazione principale",
+    "menu": "Menu",
+    "menuDescription": "Pagine del sito",
+    "language": "Cambia lingua",
+    "toggleTheme": "Cambia tema"
+  },
+  "home": {
+    "intro": "Ciao, sono Marco.",
+    "description": "Mobile Engineer a Torino: sviluppo app iOS e scrivo di architettura e interfacce.",
+    "cv": "CV",
+    "aboutMe": "Chi sono",
+    "latestPosts": "Articoli",
+    "projects": "Progetti",
+    "viewAll": "Vedi tutti"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Appunti sullo sviluppo mobile, sull'architettura e su quello che imparo strada facendo.",
+    "filterByTag": "Filtra per tag",
+    "allTags": "Tutti",
+    "noResults": "Nessun articolo trovato.",
+    "minRead": "{count} min di lettura",
+    "backToBlog": "Torna al blog",
+    "footnotes": "Note",
+    "backToContent": "Torna al testo"
+  },
+  "code": {
+    "copy": "Copia il codice",
+    "copied": "Copiato"
+  },
+  "projects": {
+    "title": "Progetti",
+    "description": "Cose che ho costruito fuori dal lavoro, dalle app iOS al web e all'AI.",
+    "categories": {
+      "mobile": {
+        "title": "Mobile",
+        "description": "App iOS e Android, librerie SwiftUI e strumenti."
+      },
+      "web": {
+        "title": "Web",
+        "description": "Siti e web app, dall'e-commerce a questo sito."
+      },
+      "ai": {
+        "title": "AI",
+        "description": "Esperimenti con i modelli linguistici e strumenti basati sull'AI."
+      }
+    },
+    "count": "{count, plural, one {# progetto} other {# progetti}}",
+    "visit": "Visita",
+    "source": "Codice",
+    "sectionsNav": "Categorie di progetti",
+    "tags": "Tecnologie",
+    "featured": "In evidenza",
+    "repository": "Repository GitHub {name}, {stars, plural, =0 {nessuna stella} one {# stella} other {# stelle}}"
+  },
+  "about": {
+    "title": "Chi sono",
+    "skills": "Tecnologie",
+    "work": "Esperienza",
+    "courses": "Corsi e certificazioni",
+    "education": "Formazione",
+    "downloadCv": "Scarica il CV",
+    "description": "Mobile Engineer nel team Platform di TheFork: esperienza, competenze e formazione.",
+    "apps": "App su cui ho lavorato",
+    "openOnAppStore": "Apri {app} sull'App Store"
+  },
+  "common": {
+    "skipToContent": "Vai al contenuto",
+    "tableOfContents": "In questa pagina",
+    "errorMessage": "Si è verificato un errore. Riprova.",
+    "tryAgain": "Riprova"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina che cerchi non esiste o è stata spostata.",
+    "backHome": "Torna alla home"
+  }
+}

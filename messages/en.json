@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "header": {
+    "mainNavigation": "Main navigation",
+    "menu": "Menu",
+    "menuDescription": "Site pages",
+    "language": "Change language",
+    "toggleTheme": "Toggle dark mode"
+  },
+  "home": {
+    "intro": "Hi, I'm Marco.",
+    "description": "Mobile Engineer based in Turin. I build iOS apps and write about architecture and UI.",
+    "cv": "CV",
+    "aboutMe": "About me",
+    "latestPosts": "Writing",
+    "projects": "Projects",
+    "viewAll": "View all"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Notes on mobile development, architecture, and whatever else I'm learning.",
+    "filterByTag": "Filter by tag",
+    "allTags": "All",
+    "noResults": "No posts found.",
+    "minRead": "{count} min read",
+    "backToBlog": "Back to blog",
+    "footnotes": "Notes",
+    "backToContent": "Back to content"
+  },
+  "code": {
+    "copy": "Copy code",
+    "copied": "Copied"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Things I've built outside my day job, from iOS apps to the web and AI.",
+    "categories": {
+      "mobile": {
+        "title": "Mobile",
+        "description": "iOS and Android apps, SwiftUI libraries and tools."
+      },
+      "web": {
+        "title": "Web",
+        "description": "Sites and web apps, from e-commerce to this site."
+      },
+      "ai": {
+        "title": "AI",
+        "description": "Experiments with language models and AI-powered tools."
+      }
+    },
+    "count": "{count, plural, one {# project} other {# projects}}",
+    "visit": "Visit",
+    "source": "Code",
+    "sectionsNav": "Project categories",
+    "tags": "Technologies",
+    "featured": "Featured",
+    "repository": "GitHub repository {name}, {stars, plural, =0 {no stars} one {# star} other {# stars}}"
+  },
+  "about": {
+    "title": "About me",
+    "skills": "Technologies",
+    "work": "Work experience",
+    "courses": "Courses and certifications",
+    "education": "Education",
+    "downloadCv": "Download CV",
+    "description": "Mobile Engineer in the Platform team at TheFork: experience, skills and education.",
+    "apps": "Apps I've worked on",
+    "openOnAppStore": "Open {app} on the App Store"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "tableOfContents": "On this page",
+    "errorMessage": "Something went wrong. Please try again.",
+    "tryAgain": "Try again"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}
