@@ -163,8 +163,13 @@ async function listGithubSlugs(): Promise<string[]> {
       .filter((f) => f.type === "file" && isPostFile(f.name))
       .map((f) => f.name.replace(/\.mdx$/, ""))
   } catch (error) {
-    // 404 = empty repo or posts/ dir doesn't exist yet
-    if (isNotFound(error)) return []
+    // 404 = empty repo, no posts/ dir yet, or a token that can't see the repo
+    if (isNotFound(error)) {
+      console.warn(
+        `[posts] GitHub returned 404 for ${owner}/${repo}/${POSTS_DIR}: check PRIVATE_CONTENT_REPO and that GITHUB_TOKEN can read this repo`
+      )
+      return []
+    }
     throw error
   }
 }
@@ -177,7 +182,11 @@ async function readPostFile(slug: string): Promise<string | null> {
 
 async function listSlugs(): Promise<string[]> {
   if (LOCAL_CONTENT_DIR) return listLocalSlugs()
-  if (!isGithubConfigured()) return []
+  if (!isGithubConfigured()) {
+    if (process.env.NODE_ENV === "production")
+      console.warn("[posts] No posts: GITHUB_TOKEN or PRIVATE_CONTENT_REPO is not set")
+    return []
+  }
   return listGithubSlugs()
 }
 
