@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
-import { DM_Sans, Geist_Mono } from "next/font/google"
+import { Atkinson_Hyperlegible, Caveat, DM_Sans, Geist_Mono } from "next/font/google"
+import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getTranslations } from "next-intl/server"
@@ -13,6 +14,19 @@ import "../globals.css"
 
 const fontSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" })
 const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
+// Handwriting, for the pen corrections in posts (.pen-fix)
+const fontHand = Caveat({ subsets: ["latin"], variable: "--font-hand" })
+// High-legibility type, for the legible theme in the design tokens post; not preloaded
+const fontLegible = Atkinson_Hyperlegible({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-legible",
+  preload: false,
+})
+
+/** Umami site ID: public (it ends up in the page anyway). The env var can override it. */
+const UMAMI_WEBSITE_ID =
+  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? "98d4be8a-064e-4884-8f75-da9bd474a96f"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -52,7 +66,9 @@ export default async function RootLayout({
       className={cn(
         "font-sans antialiased",
         fontSans.variable,
-        fontMono.variable
+        fontMono.variable,
+        fontHand.variable,
+        fontLegible.variable
       )}
     >
       <body>
@@ -72,6 +88,15 @@ export default async function RootLayout({
           </NextIntlClientProvider>
         </ThemeProvider>
         <Analytics />
+        {/* Custom events (read depth, clicks, figures): see lib/analytics.ts */}
+        {UMAMI_WEBSITE_ID && (
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={UMAMI_WEBSITE_ID}
+            data-domains="marcolagala.com"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   )

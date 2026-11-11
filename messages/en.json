@@ -23,18 +23,31 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "Notes on mobile development, architecture, and whatever else I'm learning.",
+    "description": "Notes on design systems, mobile development and architecture, and whatever else I'm learning.",
     "filterByTag": "Filter by tag",
     "allTags": "All",
     "noResults": "No posts found.",
     "minRead": "{count} min read",
     "backToBlog": "Back to blog",
     "footnotes": "Notes",
-    "backToContent": "Back to content"
+    "backToContent": "Back to content",
+    "series": "Series",
+    "allPosts": "All posts",
+    "parts": "{count} parts",
+    "partOf": "Part {part} of {total}",
+    "comingSoon": "Coming soon",
+    "reading": "You're reading it"
   },
   "code": {
     "copy": "Copy code",
     "copied": "Copied"
+  },
+  "prompt": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "expand": "Show the full prompt",
+    "collapse": "Show less",
+    "label": "Prompt"
   },
   "projects": {
     "title": "Projects",

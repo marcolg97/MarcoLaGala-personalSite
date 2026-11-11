@@ -7,7 +7,8 @@ import type { PostMeta } from "@/lib/posts"
 import { PostRow } from "./post-row"
 
 /** All posts with a tag filter. */
-export function PostList({ posts }: { posts: PostMeta[] }) {
+/** `eyebrows`: an optional line above the title of some posts, by slug (e.g. their series). */
+export function PostList({ posts, eyebrows = {} }: { posts: PostMeta[]; eyebrows?: Record<string, string> }) {
   const t = useTranslations("blog")
   const locale = useLocale()
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
@@ -19,7 +20,8 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
 
   return (
     <div className="flex flex-col gap-6">
-      {tags.length > 0 && (
+      {/* A filter with one tag filters nothing */}
+      {tags.length > 1 && (
         <div
           className="flex flex-wrap gap-2"
           role="group"
@@ -46,7 +48,7 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
       ) : (
         <div className="flex flex-col">
           {visible.map((post) => (
-            <PostRow key={post.slug} post={post} locale={locale} />
+            <PostRow key={post.slug} post={post} locale={locale} eyebrow={eyebrows[post.slug]} />
           ))}
         </div>
       )}

@@ -13,7 +13,8 @@ import { getContent, site } from "@/content"
 import { Link } from "@/i18n/navigation"
 import type { Locale } from "@/i18n/routing"
 import { BLOG_ENABLED } from "@/lib/flags"
-import { getFeaturedPosts } from "@/lib/posts"
+import { getHomePosts } from "@/lib/posts"
+import { seriesOf } from "@/lib/series"
 import { cn } from "@/lib/utils"
 import { pageMetadata } from "@/lib/seo"
 import { personData } from "@/lib/structured-data"
@@ -121,8 +122,17 @@ export default async function HomePage() {
 }
 
 async function FeaturedPosts({ locale }: { locale: Locale }) {
-  const posts = await getFeaturedPosts()
-  return posts
-    .slice(0, 5)
-    .map((post) => <PostRow key={post.slug} post={post} locale={locale} />)
+  const t = await getTranslations("blog")
+  const posts = await getHomePosts(3)
+  return posts.map((post) => {
+    const info = seriesOf(post, locale)
+    return (
+      <PostRow
+        key={post.slug}
+        post={post}
+        locale={locale}
+        eyebrow={info ? `${t("partOf", { part: info.part, total: info.total })} · ${info.series.title}` : undefined}
+      />
+    )
+  })
 }

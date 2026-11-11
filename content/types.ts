@@ -43,6 +43,17 @@ export type Project = {
   image?: string
 }
 
+/**
+ * A series of posts read in order. Parts without `post` are announced but not out yet.
+ * A post joins a series with `series: <slug>` in its frontmatter.
+ */
+export type Series = {
+  slug: string
+  title: string
+  description: string
+  parts: { title: string; post?: string }[]
+}
+
 /** Localized site content, stored in content/data/<locale>.ts. */
 export type Content = {
   profile: { role: string; location: string; bio: string }
@@ -52,4 +63,5 @@ export type Content = {
   courses: TimelineEntry[]
   education: Education[]
   projects: Project[]
+  series: Series[]
 }

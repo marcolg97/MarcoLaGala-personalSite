@@ -164,4 +164,17 @@ export default {
       url: "https://www.chiaramonimacerata.it/it",
     },
   ],
+  series: [
+    {
+      slug: "design-tokens",
+      title: "Design token, dall'idea al codice",
+      description:
+        "Un design system in tre passi: l'idea, lo stesso sistema in Figma e lo stesso sistema in SwiftUI.",
+      parts: [
+        { title: "The power of design tokens", post: "power-of-design-tokens" },
+        { title: "Lo stesso sistema in Figma, con le variabili" },
+        { title: "Lo stesso sistema in SwiftUI" },
+      ],
+    },
+  ],
 } satisfies Content

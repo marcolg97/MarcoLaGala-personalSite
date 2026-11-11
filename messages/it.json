@@ -23,18 +23,31 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "Appunti sullo sviluppo mobile, sull'architettura e su quello che imparo strada facendo.",
+    "description": "Appunti su design system, sviluppo mobile, architettura e quello che imparo strada facendo.",
     "filterByTag": "Filtra per tag",
     "allTags": "Tutti",
     "noResults": "Nessun articolo trovato.",
     "minRead": "{count} min di lettura",
     "backToBlog": "Torna al blog",
     "footnotes": "Note",
-    "backToContent": "Torna al testo"
+    "backToContent": "Torna al testo",
+    "series": "Serie",
+    "allPosts": "Tutti gli articoli",
+    "parts": "{count} parti",
+    "partOf": "Parte {part} di {total}",
+    "comingSoon": "In arrivo",
+    "reading": "Lo stai leggendo"
   },
   "code": {
     "copy": "Copia il codice",
     "copied": "Copiato"
+  },
+  "prompt": {
+    "copy": "Copia",
+    "copied": "Copiato",
+    "expand": "Mostra tutto il prompt",
+    "collapse": "Mostra meno",
+    "label": "Prompt"
   },
   "projects": {
     "title": "Progetti",

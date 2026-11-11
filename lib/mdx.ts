@@ -25,6 +25,8 @@ export function extractHeadings(source: string): Heading[] {
       .replace(/\*(.+?)\*/g, "$1")
       .replace(/`(.+?)`/g, "$1")
       .replace(/\[(.+?)\]\(.+?\)/g, "$1")
+      // JSX inside a heading, e.g. <Status>: keep only its text
+      .replace(/<[^>]+>/g, "")
       .trim()
 
     headings.push({ text, slug: slugger.slug(text), level })
@@ -39,6 +41,7 @@ export const CALLOUT_TYPES = [
   "important",
   "warning",
   "caution",
+  "learn",
 ] as const
 export type CalloutType = (typeof CALLOUT_TYPES)[number]
 

@@ -55,20 +55,34 @@ export type PostMeta = {
   published: boolean
   featured: boolean
   readingTime: number
+  /** Slug of the series the post belongs to (`series` in the frontmatter), if any */
+  series?: string
 }
 
 export type Post = PostMeta & {
   content: string
 }
 
+/**
+ * Words a reader actually reads: no inline SVG, code blocks, MDX comments, JSX tags or
+ * props, or link URLs. Otherwise a post with diagrams looks several times longer.
+ */
+function countWords(mdx: string) {
+  const text = mdx
+    .replace(/<svg[\s\S]*?<\/svg>/g, " ")
+    .replace(/^```[\s\S]*?^```/gm, " ")
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, " ")
+    .replace(/\{\[[\s\S]*?\]\}/g, " ")
+    .replace(/<\/?[A-Za-z][^>]*>/g, " ")
+    .replace(/\]\([^)]*\)/g, "]")
+  return text.split(/\s+/).filter((word) => /[\p{L}\p{N}]/u.test(word)).length
+}
+
 function parsePost(slug: string, rawContent: string): Post {
   const { data, content: body } = matter(rawContent)
   // The page header already shows the title: drop a leading "# Title" line
   const content = body.replace(/^\s*# .+\n/, "")
-  const readingTime = Math.max(
-    1,
-    Math.ceil(content.trim().split(/\s+/).length / 200)
-  )
+  const readingTime = Math.max(1, Math.ceil(countWords(content) / 200))
   return {
     slug,
     title: data.title ?? "Untitled",
@@ -84,6 +98,7 @@ function parsePost(slug: string, rawContent: string): Post {
     published: LOCAL_CONTENT_DIR ? true : data.published === true,
     featured: data.featured === true,
     readingTime,
+    ...(typeof data.series === "string" ? { series: data.series } : {}),
     content,
   }
 }
@@ -200,6 +215,12 @@ export async function getPublishedPosts(): Promise<Post[]> {
 export async function getFeaturedPosts(): Promise<Post[]> {
   const posts = await getAllPosts()
   return posts.filter((p) => p.featured && p.published)
+}
+
+/** For the home page: featured posts first, then the most recent ones. */
+export async function getHomePosts(limit = 3): Promise<Post[]> {
+  const posts = await getPublishedPosts()
+  return [...posts.filter((p) => p.featured), ...posts.filter((p) => !p.featured)].slice(0, limit)
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
